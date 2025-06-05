@@ -6,6 +6,7 @@ import Loader from '../components/Loader';
 import type { GitHubUser } from '../types';
 import useFavoritesReducer from '../hooks/useFavoritesReducer';
 import styles from '../css/HomePage.module.css'
+import NavBar from '../components/NavBar';
 
 const HomePage: React.FC = () => {
   const [users, setUsers] = useState<GitHubUser[]>([]);
@@ -43,11 +44,18 @@ const HomePage: React.FC = () => {
   return (
     <>
       <div>
-        <button onClick={() => setSince(since - 30)} disabled={since <= 0}>
-          Prev
-        </button>
-        <button onClick={() => setSince(since + 30)}>Next</button>
-        <SearchBar onSearch={handleSearch} />
+        <NavBar />
+        <div className={styles.search}>
+          <div >
+            <SearchBar onSearch={handleSearch} />
+          </div>
+          <div>
+            <button onClick={() => setSince(since - 30)} disabled={since <= 0}>
+              Prev
+            </button>
+            <button onClick={() => setSince(since + 30)}>Next</button>
+          </div>
+        </div>
         {loading ? (
           <Loader />
         ) : (
