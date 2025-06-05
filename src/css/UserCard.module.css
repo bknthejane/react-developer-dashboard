@@ -34,8 +34,7 @@
   justify-content: center;
 }
 
-.profileBtn,
-.favoriteBtn {
+.Btn {
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
   border: none;
@@ -44,25 +43,6 @@
   transition: background-color 0.3s ease;
 }
 
-.profileBtn {
-  background-color: #891eba;
-  color: #fff;
-}
-
-.profileBtn:hover {
-  background-color: #005fcc;
-}
-
-.favoriteBtn {
-  background-color: #f1f1f1;
-  color: #333;
-}
-
-.favoriteBtn:hover {
-  background-color: #e0e0e0;
-}
-
-.activeFavorite {
-  background-color: #ffe5e5;
-  color: #cc0000;
+.Btn:hover {
+  background-color: #a79f9f;
 }

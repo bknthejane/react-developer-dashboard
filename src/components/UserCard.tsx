@@ -21,8 +21,8 @@ const UserCard: React.FC<Props> = ({ user, isFavorite, onToggleFavorite }) => {
                     <h3 className={styles.username}>{user.login}</h3>
                 
                 <div className={styles.actions}>
-                    <button className={styles.profileBtn} onClick={() => navigate(`/user/${user.login}`)}>Profile</button>
-                    <button className={styles.profileBtn} onClick={onToggleFavorite}>{isFavorite ? '❤️' : '💔'}</button>
+                    <button className={styles.Btn} onClick={() => navigate(`/user/${user.login}`)}>Profile</button>
+                    <button className={styles.Btn} onClick={onToggleFavorite}>{isFavorite ? '❤️' : '💔'}</button>
                 </div>
                 </div>
             </div>

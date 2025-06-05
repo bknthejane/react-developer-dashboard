@@ -1,8 +1,10 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getUserDetail } from '../utils/gitHubServices';
 import type { GitHubUserDetail } from '../types';
 import Loader from '../components/Loader';
+import NavBar from '../components/NavBar';
+import styles from '../css/UserProfilePage.module.css';
 
 const UserProfilePage: React.FC = () => {
   const { username } = useParams();
@@ -22,14 +24,17 @@ const UserProfilePage: React.FC = () => {
   if (!user) return <div>User not found</div>;
 
   return (
-    <div>
-      <img src={user.avatar_url} alt={user.login} />
-      <h2>{user.name} (@{user.login})</h2>
-      <p>{user.bio}</p>
-      <p>📍 {user.location}</p>
-      <p>Followers: {user.followers} | Following: {user.following}</p>
-      <p>Public Repos: {user.public_repos}</p>
-    </div>
+    <>
+      <NavBar />
+      <div className={styles.container}>
+        <img src={user.avatar_url} alt={user.login} />
+        <h2>{user.name} (@{user.login})</h2>
+        <p>{user.bio}</p>
+        <p>📍 {user.location}</p>
+        <p>Followers: {user.followers} | Following: {user.following}</p>
+        <p>Public Repos: {user.public_repos}</p>
+      </div>
+    </>
   );
 };
 
