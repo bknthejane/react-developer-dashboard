@@ -1,6 +1,8 @@
 import React from "react";
 import type { GitHubUser } from "../types";
 import { useNavigate } from "react-router-dom";
+import styles from '../css/UserCard.module.css';
+
 
 interface Props {
     user: GitHubUser;
@@ -13,13 +15,15 @@ const UserCard: React.FC<Props> = ({ user, isFavorite, onToggleFavorite }) => {
 
     return (
         <>
-            <div>
-                <img src={user.avatar_url} alt={user.login} />
-                <h3>{user.login}</h3>
+            <div  className={styles.card}>
+                <img src={user.avatar_url} alt={user.login} className={styles.avatar}/>
+                <div className={styles.info}>
+                    <h3 className={styles.username}>{user.login}</h3>
                 
-                <div>
-                    <button onClick={() => navigate(`/user/${user.login}`)}>Profile</button>
-                    <button onClick={onToggleFavorite}>{isFavorite ? '❤️' : '💔'}</button>
+                <div className={styles.actions}>
+                    <button className={styles.profileBtn} onClick={() => navigate(`/user/${user.login}`)}>Profile</button>
+                    <button className={styles.profileBtn} onClick={onToggleFavorite}>{isFavorite ? '❤️' : '💔'}</button>
+                </div>
                 </div>
             </div>
         </>
