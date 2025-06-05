@@ -4,7 +4,8 @@ import UserCard from '../components/UserCard';
 import SearchBar from '../components/SearchBar';
 import Loader from '../components/Loader';
 import type { GitHubUser } from '../types';
-import useFavoritesReducer  from '../hooks/useFavoritesReducer';
+import useFavoritesReducer from '../hooks/useFavoritesReducer';
+import styles from '../css/HomePage.module.css'
 
 const HomePage: React.FC = () => {
   const [users, setUsers] = useState<GitHubUser[]>([]);
@@ -30,39 +31,41 @@ const HomePage: React.FC = () => {
   };
 
   const handleToggleFavorite = (user: GitHubUser) => {
-  const isFavorite = favorites.some(f => f.login === user.login);
-  if (isFavorite) {
-    dispatch({ type: 'REMOVE_FAVORITE', payload: user.login });
-  } else {
-    dispatch({ type: 'ADD_FAVORITE', payload: user });
-  }
-};
+    const isFavorite = favorites.some(f => f.login === user.login);
+    if (isFavorite) {
+      dispatch({ type: 'REMOVE_FAVORITE', payload: user.login });
+    } else {
+      dispatch({ type: 'ADD_FAVORITE', payload: user });
+    }
+  };
 
 
   return (
-    <div>
-      <SearchBar onSearch={handleSearch} />
-      {loading ? (
-        <Loader />
-      ) : (
-        <div>
-          <div className='cardGrid'>
-            {users.map(user => (
-              <UserCard
-                key={user.id}
-                user={user}
-                isFavorite={favorites.some(f => f.login === user.login)}
-                onToggleFavorite={() => handleToggleFavorite(user)}
-              />
-            ))}
-          </div>
-          <button onClick={() => setSince(since - 30)} disabled={since <= 0}>
-            Prev
-          </button>
-          <button onClick={() => setSince(since + 30)}>Next</button>
-        </div>
-      )}
-    </div>
+    <>
+      <div>
+        <button onClick={() => setSince(since - 30)} disabled={since <= 0}>
+          Prev
+        </button>
+        <button onClick={() => setSince(since + 30)}>Next</button>
+        <SearchBar onSearch={handleSearch} />
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <div className={styles.container}>
+              {users.map(user => (
+                <UserCard
+                  key={user.id}
+                  user={user}
+                  isFavorite={favorites.some(f => f.login === user.login)}
+                  onToggleFavorite={() => handleToggleFavorite(user)}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

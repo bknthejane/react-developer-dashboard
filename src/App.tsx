@@ -3,6 +3,7 @@ import Home from './pages/HomePage';
 import Profile from './pages/UserProfilePage';
 import Favorites from './pages/FavoritesPage';
 
+
 export default function App() {
   return (
     <BrowserRouter>
