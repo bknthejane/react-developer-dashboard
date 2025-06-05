@@ -1,6 +1,8 @@
 import React from 'react';
 import useFavoritesReducer  from '../hooks/useFavoritesReducer';
 import UserCard from '../components/UserCard';
+import NavBar from '../components/NavBar';
+import styles from '../css/HomePage.module.css'
 
 const FavoritesPage: React.FC = () => {
   const { favorites, dispatch } = useFavoritesReducer();
@@ -10,12 +12,14 @@ const FavoritesPage: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
+      <div>
+      <NavBar />
       <h1>Favorites</h1>
       {favorites.length === 0 ? (
         <p>No favorites yet.</p>
       ) : (
-        <div>
+        <div className={styles.container}>
           {favorites.map(user => (
             <UserCard
               key={user.id}
@@ -27,6 +31,7 @@ const FavoritesPage: React.FC = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
