@@ -11,7 +11,7 @@ const SearchBar: React.FC<Props> = ({onSearch}) => {
 
     useEffect(() => {
         onSearch(debounced);
-    }, []);
+    }, [debounced]);
 
     return (
         <>
