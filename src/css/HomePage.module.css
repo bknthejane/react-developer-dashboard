@@ -1,5 +1,13 @@
 .container{ 
-   display: flex;
+  display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 3rem;
+  
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-bottom: 1rem;
 }
