@@ -1,4 +1,5 @@
 import styles from '../css/NavBar.module.css';
+import  { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -9,7 +10,7 @@ const NavBar = () => {
                 </a>
                 <ul>
                     <li>
-                        <a href='/favorites'>Favorites</a>
+                        <Link to='/favorites'>Favourites</Link>
                     </li>
                     <li>
                         <a href='/'>Home</a>
